@@ -4,3 +4,4 @@ transformers
 torch
 selenium 
 webdriver_manager
+sentencepiece
