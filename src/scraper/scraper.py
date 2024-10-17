@@ -58,18 +58,11 @@ class DataExtractor:
         published_date = soup.find('time')  # Example tag for date extraction
         date_text = published_date['datetime'] if published_date and 'datetime' in published_date.attrs else 'No date found'
 
-        # Extract main text from <p>, <article>, and possibly other tags
-        #paragraphs = soup.find_all('p')
-        #article_body = " ".join([p.get_text() for p in paragraphs]) if paragraphs else 'No content found'
-
-        # If no <p> tags found, try <div> with class or id commonly used for content
-        #if not article_body.strip():
-         #   divs = soup.find_all('div', {'class': 'content'})
-          #  article_body = " ".join([div.get_text() for div in divs]) if divs else 'No content found'
-
+        # Extract all paragraphs for the article body
         paragraphs = soup.find_all('p')
         article_body = " ".join([p.get_text() for p in paragraphs]) if paragraphs else 'No content found'
         
+        # Extract all text in links for the article body
         a_tags = soup.find_all('a')
         article_body = " ".join([a.get_text() for a in a_tags]) if a_tags else 'No content found'
 
@@ -106,7 +99,6 @@ class DataStorage:
                # file.write(f"Date: {entry['date']}\n")
                 file.write(f"URL: {entry['url']}\n")
                 file.write(f"Content: {entry['content']}\n\n")
-                 #file.write(f"Summary: {entry['summary']}\n")
-                #file.write(f"Content: {entry['content']}\n\n")
+
 
                   

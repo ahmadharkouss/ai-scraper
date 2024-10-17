@@ -32,9 +32,6 @@ class Summarizer:
         # Remove empty lines and join relevant lines
         return "\n".join(line for line in relevant_lines if line.strip())
 
-    
-
-
 
     def summarize_text(self, text):
         # Extract events first
@@ -48,6 +45,10 @@ class Summarizer:
             return formatted_summary
         else:
             return "No relevant events found."
+        
+
+
+
 '''
 import spacy
 class EventExtractor:
