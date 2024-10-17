@@ -1,0 +1,7 @@
+requests
+beautifulsoup4
+spacy
+transformers
+torch
+selenium 
+webdriver_manager

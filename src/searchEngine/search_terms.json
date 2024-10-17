@@ -1,0 +1,8 @@
+{
+    "news": ["actualités", "nouvelles", "informations"],
+    "events": ["evenements", "manifestations", "rencontres"],
+    "announcements": ["communiqués", "annonces", "publications"],
+    "reports": ["rapport", "bilan", "analyse"],
+    "developments": ["développements", "progrès", "innovation"],
+    "changements" : ["changements", "modifications", "évolutions", "rachats"]
+}
