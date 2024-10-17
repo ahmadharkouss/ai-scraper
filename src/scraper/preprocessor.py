@@ -3,25 +3,6 @@ import textwrap
 import re
 
 
-from transformers import T5ForConditionalGeneration, T5Tokenizer
-from transformers import PegasusForConditionalGeneration, PegasusTokenizer
-
-""" class Summarizer:
-    def __init__(self, model_name="facebook/bart-large-cnn"):
-        # Load tokenizer and model
-        self.tokenizer = BartTokenizer.from_pretrained(model_name)
-        self.model = BartForConditionalGeneration.from_pretrained(model_name)
-
-    class Summarizer:
-    def __init__(self, model_name="t5-large"):
-        # Load tokenizer and model
-        self.tokenizer = T5Tokenizer.from_pretrained(model_name)
-        self.model = T5ForConditionalGeneration.from_pretrained(model_name)
-
-        self.tokenizer =  PegasusTokenizer.from_pretrained(model_name)
-        self.model = PegasusForConditionalGeneration.from_pretrained(model_name)
-"""
-
 class Summarizer:
     def __init__(self, model_name="philschmid/bart-large-cnn-samsum"):
         # Load tokenizer and model
