@@ -1,2 +1,6 @@
 ## `pip install -r requirements.txt`
-## `python main.py`
+## `cd src && python main.py`
+
+
+You need to modify the company name in the main.py file 
+default company is Thales
