@@ -18,11 +18,14 @@ This tool scrapes the latest news for a specified company, cleans the data, and 
    ```bash
    pip install -r requirements.txt
   ```
+
 3. Navigate to the source directory:
 
    ```bash
    cd src
    ```
+
+   
 ### Usage
 1. Modify the company name in the `main.py` file to specify the target company for news scraping. 
 By default, the company is set to Thales.
