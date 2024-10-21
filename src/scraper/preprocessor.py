@@ -8,15 +8,14 @@ class Summarizer:
         # Load tokenizer and model
         self.tokenizer = BartTokenizer.from_pretrained(model_name)
         self.model = BartForConditionalGeneration.from_pretrained(model_name)
-    #must use preprocesser to clean data before using this class
-
-    #extact only texts that contain the company name or 'Actualités' or 'news'
+  
+    #extact only texts that contain the company name 
     def preprocess_data(self, text, company_name, min_words=10):
         # Convert both text and company name to lowercase for case-insensitive matching
         text = text.lower()
         company_name = company_name.lower()
 
-        # Compile regex patterns for efficiency to match company name, "actualités", and "news"
+        # Compile regex patterns for efficiency to match company name
         pattern = re.compile(rf'\b{re.escape(company_name)}', re.IGNORECASE)
 
         # Split text into lines

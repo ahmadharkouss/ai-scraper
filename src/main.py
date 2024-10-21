@@ -3,7 +3,7 @@ from scraper.scraper import DataExtractor, DataStorage
 from scraper.preprocessor import Summarizer
 
 
-
+#For Now, Api keys are public and can be used by anyone
 API_KEY = 'AIzaSyBBklNgC49Xw8fp5Wtw8LImqEM5PBYYTgY'
 SEARCH_ENGINE_ID = 'f18cbde5698aa4a70'
 

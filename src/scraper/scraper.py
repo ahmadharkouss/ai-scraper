@@ -94,9 +94,6 @@ class DataStorage:
         #create a text file and write all data to it
         with open(filename, 'w') as file:
             for entry in self.data:
-                #file.write(f"Title: {entry['title']}\n")
-                #file.write(f"Summary: {entry['summary']}\n")
-               # file.write(f"Date: {entry['date']}\n")
                 file.write(f"URL: {entry['url']}\n")
                 file.write(f"Content: {entry['content']}\n\n")
 
