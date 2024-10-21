@@ -33,8 +33,9 @@ if __name__ == "__main__":
     all_text_content =""
     for entry in all_data:
         if entry:
-           
-            text_content = summarizer.preprocess_data(entry['content'], "Thales")
+            #print(entry['url'])
+            #print(entry['content'])
+            text_content = summarizer.preprocess_data(entry['content'], "Thaled")
             entry['content'] = text_content
             #print(text_content)
             #check if content is not empty and do not contain only one line
@@ -42,7 +43,7 @@ if __name__ == "__main__":
                 all_text_content += text_content
 
 
-    print(all_text_content)       
+   #print(all_text_content)       
     #Print Summary    
     summary = summarizer.summarize_text(all_text_content)
     print(summary)

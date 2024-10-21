@@ -4,5 +4,12 @@
     "announcements": ["communiqués", "annonces", "publications"],
     "reports": ["rapport", "bilan", "analyse"],
     "developments": ["développements", "progrès", "innovation"],
-    "changements" : ["changements", "modifications", "évolutions", "rachats"]
+    "changements" : ["changements", "modifications", "évolutions", "rachats"],
+    "acquisitions" : ["acquisitions", "rachats", "fusions", "absorptions"],
+    "partnerships" : ["partenariats", "collaborations", "alliances"],
+    "investments" : ["investissements", "financements", "subventions"],
+    "awards" : ["récompenses", "prix", "distinctions"],
+    "recognition" : ["reconnaissance", "honneurs", "mérites"],
+    "success" : ["succès", "réussites", "victoires"],
+    "reviews" : ["revues", "critiques", "évaluations"]
 }
