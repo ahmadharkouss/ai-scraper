@@ -33,22 +33,17 @@ if __name__ == "__main__":
     all_text_content =""
     for entry in all_data:
         if entry:
-            #print(entry['url'])
-            #print(entry['content'])
             text_content = summarizer.preprocess_data(entry['content'], "Thaled")
             entry['content'] = text_content
-            #print(text_content)
             #check if content is not empty and do not contain only one line
             if text_content and len(text_content.splitlines()) > 1:
                 all_text_content += text_content
 
-
-   #print(all_text_content)       
+  
     #Print Summary    
     summary = summarizer.summarize_text(all_text_content)
     print(summary)
     # Close the Selenium driver when done
     data_extractor.close_selenium()
-
     #Output all content data to a text file
     storage.output_data_to_txt()
