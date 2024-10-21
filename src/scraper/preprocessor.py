@@ -4,7 +4,7 @@ import re
 
 
 class Summarizer:
-    def __init__(self, model_name="philschmid/bart-large-cnn-samsum"):
+    def __init__(self, model_name="facebook/bart-large-cnn"):
         # Load tokenizer and model
         self.tokenizer = BartTokenizer.from_pretrained(model_name)
         self.model = BartForConditionalGeneration.from_pretrained(model_name)
@@ -35,14 +35,10 @@ class Summarizer:
         # Extract events first
         if text:
             # Join events into a single string to summarize
+             # Join events into a single string to summarize
             inputs = self.tokenizer.encode("summarize: " + text, return_tensors="pt", max_length=1024, truncation=True)
-            summary_ids = self.model.generate(inputs,
-                                               max_length=3000,
-                                                 min_length=300,
-                                                   length_penalty=0.05,
-                                                     num_beams=4,
-                                                       early_stopping=True)
-            
+            summary_ids = self.model.generate(inputs, max_length=1000, min_length=300, length_penalty=2.0, num_beams=4, early_stopping=True)
+
             summary = self.tokenizer.decode(summary_ids[0], skip_special_tokens=True)
             formatted_summary = "\n".join(textwrap.wrap(summary, width=80))
             return formatted_summary

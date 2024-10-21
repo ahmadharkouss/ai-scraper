@@ -1,6 +1,7 @@
 from searchEngine.googleSearchEngine import GoogleSearchEngine
 from scraper.scraper import DataExtractor, DataStorage
 from scraper.preprocessor import Summarizer
+import os
 
 
 #For Now, Api keys are public and can be used by anyone
@@ -11,7 +12,14 @@ SEARCH_ENGINE_ID = 'f18cbde5698aa4a70'
 
 if __name__ == "__main__":
 
-    googleSearchEngine = GoogleSearchEngine(API_KEY, SEARCH_ENGINE_ID, 'searchEngine/search_terms.json')
+    # Get the absolute path to the directory where your script is located
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Construct the absolute path to the search_terms.json file
+    search_terms_path = os.path.join(base_dir, 'searchEngine', 'search_terms.json')
+
+    # Initialize GoogleSearchEngine using the absolute path
+    googleSearchEngine = GoogleSearchEngine(API_KEY, SEARCH_ENGINE_ID, search_terms_path)
 
     urls = googleSearchEngine.search(
     SiretNumber=None,
@@ -33,7 +41,7 @@ if __name__ == "__main__":
     all_text_content =""
     for entry in all_data:
         if entry:
-            text_content = summarizer.preprocess_data(entry['content'], "Thaled")
+            text_content = summarizer.preprocess_data(entry['content'], "Thales")
             entry['content'] = text_content
             #check if content is not empty and do not contain only one line
             if text_content and len(text_content.splitlines()) > 1:
