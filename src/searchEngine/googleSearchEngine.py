@@ -2,6 +2,35 @@ import requests
 import json
 
 
+"""
+This class interfaces with the Google Custom Search API to search for news articles 
+related to a specific company, using custom search terms provided in a JSON file. 
+
+Key Features:
+- Searches for news articles in French, with an emphasis on recent news.
+- Supports queries for both the company name and an optional SIRET number for more 
+  specific results.
+- Allows customization of search terms via a JSON file, which are combined using 
+  `orTerms` to enhance the search query.
+- Retrieves up to three relevant search results per query, focusing on French news sources.
+
+Attributes:
+- `api_key`: The API key required to authenticate the requests to the Google Custom Search API.
+- `search_engine_id`: The unique identifier for the custom search engine.
+- `search_terms_dict`: A dictionary of search terms loaded from a JSON file, which helps to 
+  refine the search query.
+
+Methods:
+- `generate_orTerms_from_dict()`: Converts search terms stored in the dictionary into a single 
+  string of OR terms to improve the search query.
+- `search(companyName, SiretNumber)`: Executes the search query using the Google Custom Search API, 
+  incorporating the company name, SIRET number (if provided), and custom search terms. Returns a 
+  list of URLs corresponding to the search results.
+
+API Documentation:
+- Refer to the official Google Custom Search API documentation for additional details: 
+  https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list
+"""
 class GoogleSearchEngine:
     def __init__(self, api_key, search_engine_id, json_file):
         self.api_key = api_key
@@ -18,7 +47,6 @@ class GoogleSearchEngine:
             all_terms.extend(terms)
         return " ".join(all_terms)  # Join all terms into a single string for the query
 
-    #doc: https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list
     def search(self,companyName, SiretNumber):
         search_url = f"https://www.googleapis.com/customsearch/v1"
         params = {
