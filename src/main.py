@@ -3,8 +3,10 @@ from dotenv import load_dotenv
 
 
 from searchEngine.googleSearchEngine import GoogleSearchEngine
-from scrapegraphai.graphs import SmartScraperGraph, SmartScraperMultiGraph
-from scrapegraphai.utils import prettify_exec_info
+from scraper.graphScraper import GraphScraper
+from classifier.newsLabelClassifier import NewsLabelClassifier
+
+load_dotenv()
 
 #For Now, Api keys are public and can be used by anyone
 API_KEY = 'AIzaSyBBklNgC49Xw8fp5Wtw8LImqEM5PBYYTgY'
@@ -22,33 +24,34 @@ if __name__ == "__main__":
     # Construct the absolute path to the search_terms.json file
     search_terms_path = os.path.join(base_dir, 'searchEngine', 'search_terms.json')
 
+    #Construct the absolute path to the labels.json file
+    labels_file_path = os.path.join(base_dir, 'classifier', 'labels.json')
+
     # Initialize GoogleSearchEngine using the absolute path
     googleSearchEngine = GoogleSearchEngine(API_KEY, SEARCH_ENGINE_ID, search_terms_path)
 
+    #Get urls
     urls = googleSearchEngine.search(
     SiretNumber=SIRET,
     companyName=COMPANY_NAME)
+    print("Found urls:")
     print(urls)
+    print()
 
-    graph_config = {
-           "llm": {
-              "api_key": openai_key,
-              "model": "openai/gpt-4o-mini",
-           },
-        }
+    #Initialize GraphScraper
+    GraphScraper = GraphScraper(openai_key, COMPANY_NAME, urls)
+    #Get news summary
+    results= GraphScraper.run()
+    print("Summary with urls sources:")
+    print(results)
 
-    # ************************************************
-    # Create the SmartScraperGraph instance and run it
-    # ************************************************
-    smart_scraper_graph = SmartScraperMultiGraph(
-       prompt=f"Give me the news summary in French for {COMPANY_NAME} in one block",
-       # also accepts a string with the already downloaded HTML code
-       source=urls,
-       config=graph_config
-    )
-    
-    result = smart_scraper_graph.run()
-    print(result)
+    #Initialize NewsLabelClassifier
+    newsLabelClassifier = NewsLabelClassifier(labels_file_path, results['summary'])
+    #Get label
+    label = newsLabelClassifier.run()
+    print("Label:")
+    print(label)
+
 
 
    

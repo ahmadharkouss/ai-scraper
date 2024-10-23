@@ -1,1 +1,3 @@
 scrapegraphai
+transformers
+torch
