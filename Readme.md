@@ -1,4 +1,4 @@
-# Scraper & Summarizer Tool
+# Scraper & Summarizer Tool: Old Manual Version
 
 This tool scrapes the latest news for a specified company, cleans the data, and extracts key events related to the company.
 
