@@ -25,7 +25,7 @@ class GoogleSearchEngine:
             'q': f"{companyName} actualités",
             'cx': self.search_engine_id,
             'key': self.api_key,
-            'num': 10,
+            'num': 3,
             'cr': 'countryFR',
             'gl': 'fr',
             'hl': 'fr',
@@ -35,8 +35,8 @@ class GoogleSearchEngine:
             'exactTerms': companyName,
             'safe': 'off',
             'sort': 'date',
-            'siteSearchFilter': 'e', 
-            'siteSearch': 'https://fr.linkedin.com/',
+            #'siteSearchFilter': 'e', 
+            #'siteSearch': 'https://fr.linkedin.com/',
         }
         response = requests.get(search_url, params=params)
         search_results = response.json()

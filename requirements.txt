@@ -1,7 +1,1 @@
-requests
-beautifulsoup4
-transformers
-torch
-selenium 
-webdriver_manager
-sentencepiece
+scrapegraphai
